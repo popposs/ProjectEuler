@@ -12,7 +12,7 @@ int main(){
 	int sundays = 0;
 	int date, month, year;
 	bool leap = false;
-	int day = 0; //monday	
+	int day = 1;
 	date = 1;
 	month = 1;
 	year = 1901;
@@ -30,6 +30,6 @@ int main(){
 				++year;}
 		}
 	}
-	cout << sundays - 1 << endl;
+	cout << sundays << endl;
 
 return 0;}
