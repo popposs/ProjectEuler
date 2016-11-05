@@ -1,8 +1,3 @@
-/*
-1 Jan 1900 was a Monday.
-A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.
-How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
-*/
 #include <iostream>
 #include <vector>
 #include <map>
@@ -25,9 +20,8 @@ int main(){
 	while(!(date == 1 && month == 1 && year == 2001)){
 		if(date == 1 && day == 6) ++sundays;
 		leap = (month == 2 && (year % 100 != 0 || year % 400 == 0) && year % 4 == 0);
-		++date;
 		day = (day + 1) % 7;
-		if(date > m[month] + leap){
+		if(++date > m[month] + leap){
 			date = date % (m[month] + leap);
 			if(month < 12)
 				++month;
@@ -36,6 +30,6 @@ int main(){
 				++year;}
 		}
 	}
-	cout << sundays << endl;
+	cout << sundays - 1 << endl;
 
 return 0;}
