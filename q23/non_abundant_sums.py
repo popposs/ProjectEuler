@@ -18,22 +18,28 @@ start = timeit.default_timer()
 # Find the sum of all the positive integers which
 # cannot be written as the sum of two abundant numbers.
 # ---------------------------
-abundants = []
+abundants = {}
 for i in range(1, 28123 + 1):
     if is_abundant(i):
-        abundants.append(i)
+        if not i in abundants:
+            abundants[i] = 1
 
-abundant_sums = []
-for i in range(len(abundants)):
-    curr_list = []
-    for j in range(len(abundants)):
-        curr_list.append(abundants[(i + j) % len(abundants)])
-    added = map(add, curr_list, abundants) 
-    abundant_sums.append(added)
+summable = {}
+for b in range(24, 28123 + 1):
+    for a in abundants:
+        c = b - a
+        if c < 12:
+            break
+        if c in abundants:
+            summable[b] = 1
+            break
 
-sums = [item for sublist in abundant_sums for item in sublist]
+total = 0
+for i in range(0, 28123 + 1):
+    if not i in summable:
+        total += i 
+
 # ---------------------------
 stop = timeit.default_timer()
 print 'Time:', stop - start 
-sums = set(sums)
-print sums
+print total
