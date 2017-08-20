@@ -22,6 +22,6 @@ for i in range(10, 100):
         if ret != None:
             a, b = ret
             if a / b < 1:
-                total *= 1. * a / b 
+                total *= 1. * a / b
 
 print total
