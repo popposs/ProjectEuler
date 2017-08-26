@@ -1,4 +1,5 @@
 import math
+import timeit
 
 def pythagorean_triples(limit):
     c = 0
@@ -15,6 +16,7 @@ def pythagorean_triples(limit):
             yield [a, b, c]
         m = m + 1
 
+start = timeit.default_timer()
 ways = {}
 for triangle in pythagorean_triples(1000):
     p = reduce(lambda x, y: x + y, triangle)
@@ -39,5 +41,8 @@ for key, value in ways.iteritems():
     if len(value) > max_p_val:
         max_p_val = len(value)
         max_p = key
+
+stop = timeit.default_timer()
+print 'Time:', stop - start 
 
 print max_p, max_p_val
